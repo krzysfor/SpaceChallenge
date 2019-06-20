@@ -85,20 +85,35 @@ public class Main {
             maxWeight = 18000;      // w kilogramach
             launchExplosion = 0.0;  // wybuch przy starcie
             landingCrash = 0.0;     // wybuch przy ladowaniu
+            currentWeight = weight;
 
         }
 
+        // zwraca true w zaleznosci szansy na wybuch przy starcie
         @Override
         public boolean launch() {
 
             int random = drawingNumber();
-            this.launchExplosion = (this.weight / this.maxWeight);
-            return ;
+            this.launchExplosion = 5.0 * (this.currentWeight - this.weight) / (this.maxWeight - this.weight);
+            if (this.launchExplosion < random){
+                return true;
+            } else {
+                return false;
+            }
+
         }
 
+        // zwraca true w zaleznosci szansy na wybuch przy ladowaniu
         @Override
         public boolean land() {
-            return ;
+
+            int random = drawingNumber();
+            this.launchExplosion = 1.0 * (this.currentWeight - this.weight) / (this.maxWeight - this.weight);
+            if (this.launchExplosion < random){
+                return true;
+            } else {
+                return false;
+            }
         }
     }
 
