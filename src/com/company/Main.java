@@ -1,5 +1,10 @@
 package com.company;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+
 public class Main {
 
 
@@ -159,8 +164,34 @@ public class Main {
     }
 
 
-    public static void main(String[] args) {
-	// write your code here
+    public class Simulation {
+
+        ArrayList<Item>loadItems() throws Exception {
+
+            File filePhase1 = new File("phase-1.txt");
+            Scanner scanner = new Scanner(filePhase1);
+            ArrayList<Item> items = new ArrayList<>();
+
+            while(scanner.hasNextLine()){
+                String line = scanner.nextLine();
+                String [] splitItem = line.split("=");
+
+                System.out.printf("splitItem");
+
+
+            }
+            return items;
+        }
+    }
+
+
+    public  static void main(String[] args)  {
+
+        Simulation sim = new Simulation();
+
+
+
+
     }
 
 
