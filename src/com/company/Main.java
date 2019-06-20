@@ -174,12 +174,17 @@ public class Main {
 
             while(scanner.hasNextLine()){
                 String line = scanner.nextLine();
-                String [] splitItem = line.split("=");
-
-                System.out.printf("splitItem");
+                String[] oneItem = line.split("=");
+                items.add(new Item(oneItem[0], Integer.valueOf(oneItem[1])));
 
 
             }
+
+            for (Item i : items) {
+            System.out.println(i.name + ": " + i.weight);
+            }
+            System.out.println();
+
             return items;
         }
     }
@@ -187,10 +192,7 @@ public class Main {
 
     public  static void main(String[] args)  {
 
-        Simulation sim = new Simulation();
-
-
-
+        Simulation simulation = new Simulation();
 
     }
 
