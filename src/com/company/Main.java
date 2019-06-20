@@ -118,6 +118,45 @@ public class Main {
     }
 
 
+    class U2 extends Rocket {
+
+        public U2() {
+            cost = 120;             // w milionach
+            weight = 18000;         // w kilogramach
+            maxWeight = 29000;      // w kilogramach
+            launchExplosion = 0.0;  // wybuch przy starcie
+            landingCrash = 0.0;     // wybuch przy ladowaniu
+            currentWeight = weight;
+
+        }
+
+        // zwraca true w zaleznosci szansy na wybuch przy starcie
+        @Override
+        public boolean launch() {
+
+            int random = drawingNumber();
+            this.launchExplosion = 4.0 * (this.currentWeight - this.weight) / (this.maxWeight - this.weight);
+            if (this.launchExplosion < random){
+                return true;
+            } else {
+                return false;
+            }
+
+        }
+
+        // zwraca true w zaleznosci szansy na wybuch przy ladowaniu
+        @Override
+        public boolean land() {
+
+            int random = drawingNumber();
+            this.launchExplosion = 8.0 * (this.currentWeight - this.weight) / (this.maxWeight - this.weight);
+            if (this.launchExplosion < random){
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
 
 
     public static void main(String[] args) {
