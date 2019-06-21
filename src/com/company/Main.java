@@ -188,7 +188,7 @@ import java.util.Scanner;
         }
 
 
-        ArrayList<Rocket> loadU1(ArrayList<Item> phase1){
+        ArrayList<Rocket> loadU1(ArrayList<Item> phase){
             ArrayList<Rocket> rockets = new ArrayList<>();
             Rocket r = new U1();
 
@@ -196,7 +196,7 @@ import java.util.Scanner;
             int rocketCounter = 1;
             System.out.println("\nU1 Rocket weight = " + r.weight + "; maxWeight = " + r.maxWeight);
 
-            for (Item i:phase1) {
+            for (Item i:phase) {
 
 
                 while (r.canCarry(i)){
@@ -213,13 +213,13 @@ import java.util.Scanner;
 
             }
             rockets.add(r);
-            System.out.println("U1 fleet contains " + rockets.size() + " rockets");
+            System.out.println("U1 rockets after load: " + rockets.size() );
             return rockets;
         }
 
 
 
-        ArrayList<Rocket> loadU2(ArrayList<Item> phase1){
+        ArrayList<Rocket> loadU2(ArrayList<Item> phase){
             ArrayList<Rocket> rockets = new ArrayList<>();
             Rocket r = new U2();
 
@@ -227,7 +227,7 @@ import java.util.Scanner;
             int rocketCounter = 1;
             System.out.println("\nU2 Rocket weight = " + r.weight + "; maxWeight = " + r.maxWeight);
 
-            for (Item i:phase1) {
+            for (Item i:phase) {
 
 
                 while (r.canCarry(i)){
@@ -244,9 +244,11 @@ import java.util.Scanner;
 
             }
             rockets.add(r);
-            System.out.println("U2 fleet contains " + rockets.size() + " rockets");
+            System.out.println("U2 rockets after load: " + rockets.size());
             return rockets;
         }
+
+
     }
 
 
@@ -256,8 +258,8 @@ import java.util.Scanner;
         ArrayList<Item>phase1 = simulation.loadItems("phase-1.txt");
         ArrayList<Item>phase2 = simulation.loadItems("phase-2.txt");
 
-        ArrayList<Rocket> u1FleetPhase1 = simulation.loadU1(phase1);
-        ArrayList<Rocket> u1FleetPhase2 = simulation.loadU2(phase2);
+        ArrayList<Rocket> u1RocketsPhase1 = simulation.loadU1(phase1);
+        ArrayList<Rocket> u1RocketsPhase2 = simulation.loadU1(phase2);
     }
 
 
