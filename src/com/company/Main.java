@@ -312,6 +312,8 @@ import java.util.Scanner;
 
         System.out.println("Total budget of U2 fleet = " + (budgetU2phase1 + budgetU2phase2) + " (millions)\n");
 
+        // test commit
+
 
     }
 
