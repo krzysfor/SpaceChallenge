@@ -166,17 +166,16 @@ import java.util.Scanner;
 
     public static class Simulation {
 
-        ArrayList<Item>loadItems() throws Exception {
+        ArrayList<Item>loadItems(String filePhase) throws Exception {
 
-            File filePhase1 = new File("phase-1.txt");
-            Scanner scanner = new Scanner(filePhase1);
+            File file = new File(filePhase);
+            Scanner scanner = new Scanner(file);
             ArrayList<Item> items = new ArrayList<>();
 
             while(scanner.hasNextLine()){
                 String line = scanner.nextLine();
                 String[] oneItem = line.split("=");
                 items.add(new Item(oneItem[0], Integer.valueOf(oneItem[1])));
-
 
             }
 
@@ -193,7 +192,8 @@ import java.util.Scanner;
     public  static void main(String[] args) throws Exception  {
 
         Simulation  simulation = new Simulation();
-        simulation.loadItems();
+        ArrayList<Item>phase1 = simulation.loadItems("phase-1.txt");
+        ArrayList<Item>phase2 = simulation.loadItems("phase-2.txt");
 
     }
 
