@@ -76,7 +76,7 @@ import java.util.Scanner;
 
 
         public int drawingNumber(){
-            this.randomNumber = (int) Math.random()*100 +1;
+            this.randomNumber = (int) (Math.random()*100 +1);
             return randomNumber;
         }
     }
@@ -249,15 +249,30 @@ import java.util.Scanner;
         }
 
 
-        int runSimulation(ArrayList<Rocket> rockets){
+        int runSimulation(ArrayList<Rocket> list) {
+            int num = 0; //failed trials of launch/land
+            int indexSuccess = 1;
+            for (Rocket r : list) {
 
-            for (Rocket r:
-                 rockets) {
-
-                while (r.launch()){
-
+                while (!r.launch()) {
+                    r.launch();
+                    num++;
+            //        System.out.println("Extra trials: " + num);
                 }
+           //     System.out.println("No." + indexSuccess + " rocket launched");
+
+                while (!r.land()) {
+                    r.land();
+                    num++;
+             //       System.out.println("Extra trials: " + num);
+                }
+            //    System.out.println("No." + indexSuccess + " rocket landed\n");
+                indexSuccess++;
             }
+            int budget = list.get(0).cost * (list.size() + num);
+            System.out.println(list.size() + " rockets and " + num + " extra = "
+                    + (list.size() + num) + " in total");
+            return budget;
         }
 
 
@@ -270,8 +285,34 @@ import java.util.Scanner;
         ArrayList<Item>phase1 = simulation.loadItems("phase-1.txt");
         ArrayList<Item>phase2 = simulation.loadItems("phase-2.txt");
 
+        // dla U1
         ArrayList<Rocket> u1RocketsPhase1 = simulation.loadU1(phase1);
         ArrayList<Rocket> u1RocketsPhase2 = simulation.loadU1(phase2);
+
+        System.out.println("\nU1 rocket cost = 100");
+        int budgetU1phase1 = simulation.runSimulation(u1RocketsPhase1);
+        System.out.println("Budget of U1 fleet for phase 1 = " + budgetU1phase1 + " (millions)");
+
+        int budgetU1phase2 = simulation.runSimulation(u1RocketsPhase2);
+        System.out.println("Budget of U1 fleet for phase 2 = " + budgetU1phase2 + " (millions)");
+
+        System.out.println("Total budget of U1 fleet = " + (budgetU1phase1 + budgetU1phase2) + " (millions)\n");
+
+
+        /// dla U2
+        ArrayList<Rocket> u2RocketsPhase1 = simulation.loadU2(phase1);
+        ArrayList<Rocket> u2RocketsPhase2 = simulation.loadU2(phase2);
+
+        System.out.println("\nU2 rocket cost = 100");
+        int budgetU2phase1 = simulation.runSimulation(u2RocketsPhase1);
+        System.out.println("Budget of U2 fleet for phase 1 = " + budgetU2phase1 + " (millions)");
+
+        int budgetU2phase2 = simulation.runSimulation(u2RocketsPhase2);
+        System.out.println("Budget of U2 fleet for phase 2 = " + budgetU2phase2 + " (millions)");
+
+        System.out.println("Total budget of U2 fleet = " + (budgetU2phase1 + budgetU2phase2) + " (millions)\n");
+
+
     }
 
 
