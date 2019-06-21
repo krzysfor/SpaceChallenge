@@ -33,7 +33,7 @@ import java.util.Scanner;
     }
 
 
-    class Rocket implements SpaceShip {
+     public static class Rocket implements SpaceShip {
 
 
         int maxWeight;
@@ -82,7 +82,7 @@ import java.util.Scanner;
     }
 
 
-    class U1 extends Rocket {
+     public static class U1 extends Rocket {
 
         public U1() {
             cost = 100;             // w milionach
@@ -123,7 +123,7 @@ import java.util.Scanner;
     }
 
 
-    class U2 extends Rocket {
+    public static class U2 extends Rocket {
 
         public U2() {
             cost = 120;             // w milionach
@@ -180,11 +180,72 @@ import java.util.Scanner;
             }
 
             for (Item i : items) {
-            System.out.println(i.name + ": " + i.weight);
+            //System.out.println(i.name + ": " + i.weight);
             }
-            System.out.println();
+            //System.out.println();
 
             return items;
+        }
+
+
+        ArrayList<Rocket> loadU1(ArrayList<Item> phase1){
+            ArrayList<Rocket> rockets = new ArrayList<>();
+            Rocket r = new U1();
+
+            int itemCounter = 1;
+            int rocketCounter = 1;
+            System.out.println("\nU1 Rocket weight = " + r.weight + "; maxWeight = " + r.maxWeight);
+
+            for (Item i:phase1) {
+
+
+                while (r.canCarry(i)){
+                    r.carry(i);
+                    itemCounter++;
+/*                    System.out.println("i weight: " + i.weight + "  " +i.name);
+                    System.out.println("i currentWeight: " + r.currentWeight );*/
+                }
+                rockets.add(r);
+                r = new U1();
+                rocketCounter++;
+
+
+
+            }
+            rockets.add(r);
+            System.out.println("U1 fleet contains " + rockets.size() + " rockets");
+            return rockets;
+        }
+
+
+
+        ArrayList<Rocket> loadU2(ArrayList<Item> phase1){
+            ArrayList<Rocket> rockets = new ArrayList<>();
+            Rocket r = new U2();
+
+            int itemCounter = 1;
+            int rocketCounter = 1;
+            System.out.println("\nU2 Rocket weight = " + r.weight + "; maxWeight = " + r.maxWeight);
+
+            for (Item i:phase1) {
+
+
+                while (r.canCarry(i)){
+                    r.carry(i);
+                    itemCounter++;
+/*                    System.out.println("i weight: " + i.weight + "  " +i.name);
+                    System.out.println("i currentWeight: " + r.currentWeight );*/
+                }
+                rockets.add(r);
+                r = new U2();
+                rocketCounter++;
+
+
+
+            }
+            rockets.add(r);
+            System.out.println("U2 fleet contains " + rockets.size() + " rockets");
+            return rockets;
         }
     }
 
@@ -195,6 +256,8 @@ import java.util.Scanner;
         ArrayList<Item>phase1 = simulation.loadItems("phase-1.txt");
         ArrayList<Item>phase2 = simulation.loadItems("phase-2.txt");
 
+        ArrayList<Rocket> u1FleetPhase1 = simulation.loadU1(phase1);
+        ArrayList<Rocket> u1FleetPhase2 = simulation.loadU2(phase2);
     }
 
 
