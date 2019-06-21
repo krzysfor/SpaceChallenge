@@ -5,11 +5,11 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 
-public  class Main {
+ public  class Main {
 
 
 
-    class Item{
+    public static class Item{
 
 
         String name;
@@ -164,7 +164,7 @@ public  class Main {
     }
 
 
-    public  class Simulation {
+    public static class Simulation {
 
         ArrayList<Item>loadItems() throws Exception {
 
@@ -190,7 +190,7 @@ public  class Main {
     }
 
 
-    public static  void main(String[] args)  {
+    public  static void main(String[] args) throws Exception  {
 
         Simulation  simulation = new Simulation();
         simulation.loadItems();
