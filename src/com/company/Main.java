@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 
-public class Main {
+public  class Main {
 
 
 
@@ -164,7 +164,7 @@ public class Main {
     }
 
 
-    public class Simulation {
+    public  class Simulation {
 
         ArrayList<Item>loadItems() throws Exception {
 
@@ -190,9 +190,10 @@ public class Main {
     }
 
 
-    public  static void main(String[] args)  {
+    public static  void main(String[] args)  {
 
-        Simulation simulation = new Simulation();
+        Simulation  simulation = new Simulation();
+        simulation.loadItems();
 
     }
 
