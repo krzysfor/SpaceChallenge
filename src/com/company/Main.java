@@ -249,6 +249,18 @@ import java.util.Scanner;
         }
 
 
+        int runSimulation(ArrayList<Rocket> rockets){
+
+            for (Rocket r:
+                 rockets) {
+
+                while (r.launch()){
+
+                }
+            }
+        }
+
+
     }
 
 
